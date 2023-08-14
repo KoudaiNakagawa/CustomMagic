@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
 			moveV2.y += -0.05f;
         }
 
-
-
         transform.Translate(moveV2);
     }
 }
