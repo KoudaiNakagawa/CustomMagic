@@ -4,35 +4,52 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject player; 
     new Vector2 moveV2;
+    float moveSpead = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        moveV2 = new Vector2(0f, 0f);
-        
-        if (Input.GetKey (KeyCode.LeftArrow) | Input.GetKey (KeyCode.A)) 
+
+        if (Input.GetMouseButtonDown(0))  
         {
-			moveV2.x += -0.05f;
-		}
-		if (Input.GetKey (KeyCode.RightArrow) | Input.GetKey (KeyCode.D)) 
-        {
-			moveV2.x += 0.05f;
+            var pos = Input.mousePosition;
         }
-        if (Input.GetKey (KeyCode.UpArrow) | Input.GetKey (KeyCode.W)) 
+        else if (Input.touchCount > 0)  
         {
-			moveV2.y += 0.05f;
-		}
-		if (Input.GetKey (KeyCode.DownArrow) | Input.GetKey (KeyCode.S)) 
-        {
-			moveV2.y += -0.05f;
+            var touch = Input.GetTouch(0);  
+            if (touch.phase == TouchPhase.Began)  
+            {
+                var pos = touch.position;  
+            }
         }
 
-        transform.Translate(moveV2);
+        moveV2 = new Vector2(0f, 0f);
+        
+        if (Input.GetKey(KeyCode.LeftArrow) | Input.GetKey(KeyCode.A))
+        {
+			moveV2.x += -1f;
+		}
+        if (Input.GetKey(KeyCode.UpArrow) | Input.GetKey(KeyCode.W)) 
+        {
+			moveV2.y += 1f;
+		}
+		if (Input.GetKey(KeyCode.RightArrow) | Input.GetKey(KeyCode.D)) 
+        {
+			moveV2.x += 1f;
+        }
+		if (Input.GetKey(KeyCode.DownArrow) | Input.GetKey(KeyCode.S)) 
+        {
+			moveV2.y += -1f;
+        }
+        
+        moveV2.Normalize();
+        player.transform.Translate(moveV2 *moveSpead);
     }
 }
