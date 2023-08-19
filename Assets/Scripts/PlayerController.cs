@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player; 
+    public GameObject Player; 
+    public GameObject CharaMoveButtons;
+    public GameObject SelectMagicButtons;
+    
+
     new Vector2 moveV2;
     float moveSpead = 0.05f;
     // Start is called before the first frame update
@@ -50,6 +54,6 @@ public class PlayerController : MonoBehaviour
         }
         
         moveV2.Normalize();
-        player.transform.Translate(moveV2 *moveSpead);
+        Player.transform.Translate(moveV2 *moveSpead);
     }
 }

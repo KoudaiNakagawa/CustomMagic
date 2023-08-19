@@ -134,9 +134,9 @@ GameObject:
   - component: {fileID: 247356850}
   - component: {fileID: 247356851}
   - component: {fileID: 247356852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpButton
-  m_TagString: Untagged
+  m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266599308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SelectMagicButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,9 +280,9 @@ GameObject:
   - component: {fileID: 455714627}
   - component: {fileID: 455714628}
   - component: {fileID: 455714629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownButton
-  m_TagString: Untagged
+  m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,9 +391,9 @@ GameObject:
   - component: {fileID: 513958747}
   - component: {fileID: 513958748}
   - component: {fileID: 513958749}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightButton
-  m_TagString: Untagged
+  m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,6 +503,8 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420034}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -609,6 +611,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d4947238267e79fbc427413af6d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1687371177}
+  CharaMoveButtons: {fileID: 1755953539}
+  SelectMagicButtons: {fileID: 266599307}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +831,7 @@ Transform:
   m_GameObject: {fileID: 1381126433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 6, y: 10, z: 1}
+  m_LocalScale: {x: 5.625, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -815,9 +848,9 @@ GameObject:
   - component: {fileID: 1460097177}
   - component: {fileID: 1460097178}
   - component: {fileID: 1460097179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightButton
-  m_TagString: Untagged
+  m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -926,9 +959,9 @@ GameObject:
   - component: {fileID: 1504072779}
   - component: {fileID: 1504072780}
   - component: {fileID: 1504072781}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftButton
-  m_TagString: Untagged
+  m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1037,9 +1070,9 @@ GameObject:
   - component: {fileID: 1645078912}
   - component: {fileID: 1645078913}
   - component: {fileID: 1645078914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownButton
-  m_TagString: Untagged
+  m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1232,9 +1265,9 @@ GameObject:
   - component: {fileID: 1709371986}
   - component: {fileID: 1709371987}
   - component: {fileID: 1709371988}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftButton
-  m_TagString: Untagged
+  m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1341,7 +1374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755953540}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CharacterMoveButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1378,9 +1411,9 @@ GameObject:
   - component: {fileID: 1976398017}
   - component: {fileID: 1976398018}
   - component: {fileID: 1976398019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpButton
-  m_TagString: Untagged
+  m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1487,8 +1520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2008293228}
-  - component: {fileID: 2008293229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ControllPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1502,9 +1534,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008293227}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1755953540}
@@ -1512,16 +1544,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2008293229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008293227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d4947238267e79fbc427413af6d4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1687371177}
