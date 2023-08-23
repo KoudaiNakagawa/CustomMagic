@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 247356850}
   - component: {fileID: 247356851}
   - component: {fileID: 247356852}
-  m_Layer: 6
-  m_Name: UpButton
+  m_Layer: 7
+  m_Name: 2ndButton
   m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,8 +280,8 @@ GameObject:
   - component: {fileID: 455714627}
   - component: {fileID: 455714628}
   - component: {fileID: 455714629}
-  m_Layer: 6
-  m_Name: DownButton
+  m_Layer: 7
+  m_Name: 4thButton
   m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1381126435}
   - component: {fileID: 1381126434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground(temp)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 1460097178}
   - component: {fileID: 1460097179}
   m_Layer: 6
-  m_Name: RightButton
+  m_Name: 3rdButton
   m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 1504072780}
   - component: {fileID: 1504072781}
   m_Layer: 6
-  m_Name: LeftButton
+  m_Name: 1stButton
   m_TagString: SelectMagicButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 1645078912}
   - component: {fileID: 1645078913}
   - component: {fileID: 1645078914}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: DownButton
   m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
@@ -1411,7 +1411,7 @@ GameObject:
   - component: {fileID: 1976398017}
   - component: {fileID: 1976398018}
   - component: {fileID: 1976398019}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: UpButton
   m_TagString: CharacterMoveButtons
   m_Icon: {fileID: 0}
@@ -1535,7 +1535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008293227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -10}
+  m_LocalPosition: {x: 0, y: -5, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:

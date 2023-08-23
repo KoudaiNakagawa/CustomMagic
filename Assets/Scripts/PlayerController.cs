@@ -8,29 +8,56 @@ public class PlayerController : MonoBehaviour
     public GameObject CharaMoveButtons;
     public GameObject SelectMagicButtons;
     
-
-    new Vector2 moveV2;
+    RaycastHit2D hitX, hitY;
+    new Vector2 pos, moveV2;
     float moveSpead = 0.05f;
+    float rayMaxDistance = 15;
+    int ButtonVec2X = 1 << 6;
+    int ButtonVec2Y = 1 << 7;
+
+    int[] layers = new int[3];
+    RaycastHit2D[] hits = new RaycastHit2D[3];
+
     // Start is called before the first frame update
     void Start()
     {
-
+        for(int i=0; i < 3; i++)
+        {
+            layers[i] = 1 << i+6;
+        }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))  
+        if (Input.GetMouseButtonDown(0))
         {
-            var pos = Input.mousePosition;
+            pos.x = Input.mousePosition.x;
+            pos.y = Input.mousePosition.y;
+
+            Ray ray = Camera.main.ScreenPointToRay(pos);
+
+            for(int i=0; i < 3; i++)
+            {
+                hits[i] = Physics2D.Raycast(ray.origin, ray.direction, rayMaxDistance, layers[i]);
+                if (hits[i].collider) { Debug.Log(hits[i].collider.gameObject.name); }
+            }
+
+            /*
+            hitX = Physics2D.Raycast(ray.origin, ray.direction, rayMaxDistance, ButtonVec2X);
+            hitY = Physics2D.Raycast(ray.origin, ray.direction, rayMaxDistance, ButtonVec2Y);
+            
+            if( hitX.collider) { Debug.Log(hitX.collider.gameObject.name); }
+            if( hitY.collider) { Debug.Log(hitY.collider.gameObject.name); }
+            */
         }
-        else if (Input.touchCount > 0)  
+        else if (Input.touchCount > 0)
         {
-            var touch = Input.GetTouch(0);  
+            var touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)  
             {
-                var pos = touch.position;  
+                pos = touch.position;  
             }
         }
 
@@ -52,8 +79,14 @@ public class PlayerController : MonoBehaviour
         {
 			moveV2.y += -1f;
         }
-        
+
         moveV2.Normalize();
+
+
+    }
+
+    void FixedUpdate()
+    {
         Player.transform.Translate(moveV2 *moveSpead);
     }
 }
