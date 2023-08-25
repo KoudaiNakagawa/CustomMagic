@@ -15,8 +15,8 @@ TagManager:
   - UI
   - ButtonVec2.x
   - ButtonVec2.y
+  - ButtonNum
   - GameArea
-  - 
   - 
   - 
   - 

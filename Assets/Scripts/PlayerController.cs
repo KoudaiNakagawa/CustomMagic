@@ -15,13 +15,13 @@ public class PlayerController : MonoBehaviour
     int ButtonVec2X = 1 << 6;
     int ButtonVec2Y = 1 << 7;
 
-    int[] layers = new int[3];
-    RaycastHit2D[] hits = new RaycastHit2D[3];
+    int[] layers = new int[4];
+    RaycastHit2D[] hits = new RaycastHit2D[4];
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0; i < 3; i++)
+        for(int i=0; i < 4; i++)
         {
             layers[i] = 1 << i+6;
         }
@@ -38,10 +38,14 @@ public class PlayerController : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(pos);
 
-            for(int i=0; i < 3; i++)
+            for(int i=0; i < 4; i++)
             {
                 hits[i] = Physics2D.Raycast(ray.origin, ray.direction, rayMaxDistance, layers[i]);
-                if (hits[i].collider) { Debug.Log(hits[i].collider.gameObject.name); }
+                if (hits[i].collider)
+                {
+                    Debug.Log(hits[i].collider.gameObject.name);
+                    if ( i >= 1 ) { break; }
+                }
             }
 
             /*
@@ -81,8 +85,6 @@ public class PlayerController : MonoBehaviour
         }
 
         moveV2.Normalize();
-
-
     }
 
     void FixedUpdate()
