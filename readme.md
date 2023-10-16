@@ -1,10 +1,11 @@
 # 説明
 
 **CustomMagic**は見下ろし型の魔法で戦う2Dゲームです。
-使用する魔法はプリセットの他に、複数の関数を組み合わせて作成できる**CustomMagic**があり、これは魔法の強力さに比例して**消費マナ**と**タメ時間**は増大します。
+使用する魔法はプリセットの他に、SimpLangという言語を使用して作成できる**CustomMagic**があり、これは魔法の強力さに比例して**消費マナ**と**タメ時間**は増大します。
 タメ時間中にスタンダメージを受けると、魔法はキャンセルされ、消費したマナと共に霧散します。
 
 現時点で、1vs1の対人戦闘とボスvs1~4の協力戦闘を予定しています。ボスのビジュアル、使用魔法、行動パターンは、AIを活用することも検討しています。
+
 
 # 関数ざっくり
 
@@ -46,12 +47,11 @@
     * 単純追尾誘導 (1.25)
     * 比例誘導 (1.5)
 * spead
-    * int 0 ~ 512
+    * int 1 ~ 512
 * lotation (進行方向から時計回りに回転します。オプション引数。)
     * int 0 ~ 360
 
 ```cost += (1+ type* 0.25)* (spead+1)* (lotation+1)```
-
 
 ## Area(radius, time, angle=360)
 * radius
@@ -83,3 +83,82 @@
     * time 0 ~ 512
 
 ```cost += time```
+
+---
+
+# SimpLang-BNF
+
+```
+Str := Char+
+    Lower := Regular[a-z]
+    Upper := Regular[A-Z]
+    Under := '_'
+
+    Char := Lower | Upper | Under
+
+Int := PosNum | Zero | NegNum
+    Zero := '0'
+    NonZeroNums :=  ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’
+
+    NumWithDig = NonZeroNums {Nums}
+    Nums := Zero | NonZeroNums
+
+    PosNum := ['+'] NumWithDig
+    NegNum :=  '-'  NumWithDig
+
+Bool := True | False
+    True := '01'
+    False := '00'　
+
+Variable := IntVariable | BoolVaiable
+    IntVariable := Str {Str | Nums+}
+    BoolVaiable := Str {Str | Nums+}
+
+Substitution := IntSubstitution | BoolSubstitution
+    IntSubstitution := IntVariable '=' ComparExpr
+    BoolSubstitution := BoolVariable '=' ArithExpr
+
+
+Expr := ArithExpr | LogicExpr | ComparExpr
+    
+    ArithExpr := IntVariable | ArithExpr ArithOper ArithExpr
+        ArithOper := '+' | '-' | '*' | '/' | '%'
+
+    LogicExpr := BoolVariable | ComparExpr | LogocExpr LogicOper LogocExpr
+        LogicOper := '&' | '|' | '!' 
+
+    ComparExpr := Variable | ArithExpr | LogicExpr | ComparExpr ComparOper ComparExpr
+        ComparOper := '<' | '>' | '<=' | '>=' | '==' | '!='
+
+
+Function := If | For | Movement | Area | Damage | Str {Str | Nums+} '(' [Argment ',']+ ')'
+    
+    Sentence　:= Substitution | Function
+
+    Argument := IntArgument | BoolArgument
+        IntArgument := IntVariable | Int
+        BoolArgument := BoolVariable | Bool
+
+    If := 'if' '(' ComparExpr ',' WhenTrue [ ',' WhenFalse ] ')'
+        WhenTrue := Sentence
+        WhenFalse := Sentence
+
+    For := 'for' '(' Start ',' End ',' WhenLoop ')' 
+        Start := IntSubstitution
+        End := IntArgment
+        WhenLoop := Sentence
+
+    Movement := 'movement' '(' Type ',' Spead [',' Lotation ] ')'
+        Type := IntArgment
+        Spead := IntArgment
+        Latation := IntArgment
+
+    Area := 'area' '(' Radius ',' Time ',' Angle ')'
+        Radius := IntArgment
+        Time := IntArgment
+        Angle := IntArgment
+
+    Damage := 'damage' '(' Physics ',' Stun ')'
+        Physics := IntArgment
+        Stun := IntArgment
+```
