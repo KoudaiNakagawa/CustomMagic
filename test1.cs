@@ -9,10 +9,10 @@ public class test1
 {
     public static void Main() {
 
-        string path = @"./test1.py";
+        string path = @"./test1.sl";
         var textList = ReadFile(path);
 
-        UsePythonFunctions(textList);
+        SimpLang(textList);
     }
 
     static List<string> ReadFile(string path) {
@@ -20,6 +20,21 @@ public class test1
         return textList;
     }
 
+    static void SimpLang(List<string> textList) {
+        
+        foreach( string text in textList) {
+            MatchCollection results = Regex.Matches(text,  @"[a-zA-Z][a-zA-Z0-9]*| [1-9][0-9]* | 0[0-1] | ==| <=| >=| !=| [=+*-/%()<>!&\,|\\s\\t\\]" );
+        
+            foreach (Match m in results) {
+                string s = m.Value;
+            
+                Console.Write(s + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    /*
     static void UsePythonFunctions(List<string> textList) {
         
         foreach( string text in textList) {
@@ -28,7 +43,7 @@ public class test1
             foreach (Match m in results) {
                 string s = m.Value;
             
-                Console.Write(s);
+                Console.Write(s + ", ");
             }
             Console.WriteLine();
         }
@@ -51,4 +66,6 @@ public class test1
     static int intP(dynamic d) {
         return int.Parse(d.ToString());
     }
+
+    */
 }

@@ -51,7 +51,7 @@
 * lotation (進行方向から時計回りに回転します。オプション引数。)
     * int 0 ~ 360
 
-```cost += (1+ type* 0.25)* (spead+1)* (lotation+1)```
+```cost += (1+ type* 0.25)* (spead)* (lotation+1)```
 
 ## Area(radius, time, angle=360)
 * radius
@@ -92,15 +92,14 @@
 Str := Char+
     Lower := Regular[a-z]
     Upper := Regular[A-Z]
-    Under := '_'
 
-    Char := Lower | Upper | Under
+    Char := Lower | Upper
 
 Int := PosNum | Zero | NegNum
     Zero := '0'
     NonZeroNums :=  ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’
 
-    NumWithDig = NonZeroNums {Nums}
+    NumWithDig := NonZeroNums {Nums}
     Nums := Zero | NonZeroNums
 
     PosNum := ['+'] NumWithDig
@@ -139,26 +138,26 @@ Function := If | For | Movement | Area | Damage | Str {Str | Nums+} '(' [Argment
         IntArgument := IntVariable | Int
         BoolArgument := BoolVariable | Bool
 
-    If := 'if' '(' ComparExpr ',' WhenTrue [ ',' WhenFalse ] ')'
+    If := 'If' '(' ComparExpr ',' WhenTrue [ ',' WhenFalse ] ')'
         WhenTrue := Sentence
         WhenFalse := Sentence
 
-    For := 'for' '(' Start ',' End ',' WhenLoop ')' 
+    For := 'For' '(' Start ',' End (',' WhenLoop)+ ')' 
         Start := IntSubstitution
         End := IntArgment
         WhenLoop := Sentence
 
-    Movement := 'movement' '(' Type ',' Spead [',' Lotation ] ')'
+    Movement := 'Movement' '(' Type ',' Spead [',' Lotation ] ')'
         Type := IntArgment
         Spead := IntArgment
         Latation := IntArgment
 
-    Area := 'area' '(' Radius ',' Time ',' Angle ')'
+    Area := 'Area' '(' Radius ',' Time ',' Angle ')'
         Radius := IntArgment
         Time := IntArgment
         Angle := IntArgment
 
-    Damage := 'damage' '(' Physics ',' Stun ')'
+    Damage := 'Damage' '(' Physics ',' Stun ')'
         Physics := IntArgment
         Stun := IntArgment
 ```
