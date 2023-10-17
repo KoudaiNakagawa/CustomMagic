@@ -23,7 +23,7 @@ public class test1
     static void SimpLang(List<string> textList) {
         
         foreach( string text in textList) {
-            MatchCollection results = Regex.Matches(text,  @"[a-zA-Z][a-zA-Z0-9]*| [1-9][0-9]* | 0[0-1] | ==| <=| >=| !=| [=+*-/%()<>!&\,|\\s\\t\\]" );
+            MatchCollection results = Regex.Matches(text,  @"[a-zA-Z][a-zA-Z0-9]*|[1-9][0-9]*|0[0-1]|==|<=|>=|!=|[=+*-/%()<>!&\,|\\s\\t\\]" );
         
             foreach (Match m in results) {
                 string s = m.Value;
