@@ -43,9 +43,9 @@
 ## Movement(type, spead, lotation=0)
 * type
     * int 0 ~ 2
-    * ストレート (1)
-    * 単純追尾誘導 (1.25)
-    * 比例誘導 (1.5)
+    * ストレート (0)
+    * 単純追尾誘導 (1)
+    * 比例誘導 (2)
 * spead
     * int 1 ~ 512
 * lotation (進行方向から時計回りに回転します。オプション引数。)
@@ -109,7 +109,7 @@ Bool := True | False
     True := '01'
     False := '00'　
 
-Variable := IntVariable | BoolVaiable
+Variable := IntVariable | BoolVariable
     IntVariable := Str {Str | Nums+}
     BoolVaiable := Str {Str | Nums+}
 
