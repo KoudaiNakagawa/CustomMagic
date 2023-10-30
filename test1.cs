@@ -1,3 +1,6 @@
+using System.Reflection.Emit;
+//using System.Data;
+using Internal;
 using System;
 using System.IO;
 using System.Linq;
@@ -24,7 +27,7 @@ public class test1
         
         foreach( string text in textList) {
             MatchCollection results = Regex.Matches(text,  @"[a-zA-Z][a-zA-Z0-9]*|[1-9][0-9]*|0[0-1]|==|<=|>=|!=|[=+*-/%()<>!&\,|\\s\\t\\]" );
-        
+
             foreach (Match m in results) {
                 string s = m.Value;
             
@@ -32,6 +35,33 @@ public class test1
             }
             Console.WriteLine();
         }
+
+        Console.WriteLine();
+
+        foreach( string text in textList) {
+            MatchCollection results2 = Regex.Matches(text, @"[^\(\)]+(?=\([^\(\)]+\))|[^\(\)]+$|^[^\(\)]+");
+
+            foreach (Match m in results2) {
+                string s = m.Value;
+            
+                Console.Write(s + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    ExprParser
+
+    static int ArithExprParser(string s) {
+
+    }
+
+    static bool BoolExprParser(string s) {
+
+    }
+
+    static bool ComparxprParser(string s) {
+
     }
 
     /*
