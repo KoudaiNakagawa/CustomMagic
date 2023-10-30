@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 public class test1
 {
+    
     public static void Main() {
 
         string path = @"./test1.sl";
@@ -50,18 +51,22 @@ public class test1
         }
     }
 
-    ExprParser
 
+    string[] ArithOper = new string[5]{"+", "-", "*", "/", "%"};
+    
     static int ArithExprParser(string s) {
-
+        if  in s    
     }
+
+    string[] LogicOper = [3]{"&", "|", "!"};
 
     static bool BoolExprParser(string s) {
 
     }
 
+    string[] ComparExpr = new string[6]{ "<", ">", "<=", ">=", "==", "!=" };
     static bool ComparxprParser(string s) {
-
+        
     }
 
     /*
