@@ -1,3 +1,6 @@
+using System.Runtime.Serialization;
+using System.Collections.Concurrent;
+using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 //using System.Data;
@@ -52,8 +55,10 @@ public class test1
         }
     }
 
-    static void RecursiveCallTreeParser(string s) {
-        switch(s) {
+    static dynamic TreeParser_RecCal(string s) {
+        //string s0 = s[0];
+        
+        switch(s0) {
             case "If":
                 //; break;
             case "For":
@@ -64,10 +69,15 @@ public class test1
                 //; break;
             case "Damage":
                 //; break;
-            case "*=":
+            case string s0 when Regex.IsMatch(s0, @"[a-zA-Z][a-zA-Z0-9]*\s*="):
                 //; break;
-             
+            default:
+                Console.WriteLine("Syntax Error"); break;
         }
+        
+        //s = s[1:]
+
+        return TreeParser_RecCal(s);
     }
 
     string[] ArithOper = new string[5]{"+", "-", "*", "/", "%"};
