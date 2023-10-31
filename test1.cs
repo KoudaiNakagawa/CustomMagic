@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
-//using System.Data;
 using Internal;
 using System;
 using System.IO;
@@ -58,28 +57,45 @@ public class test1
     static dynamic TreeParser_RecCal(string[] strLis) {
         
         switch(strLis[0]) {
+            case "If"
                 if( TreeParser_RecCal(strLis[1]) ) {
                     TreeParser_RecCal(strLis[2]);
                 }
                 else {
                     try { TreeParser_RecCal(strLis[3]); }
                 }
+            
             case "For":
                 /* どうやって動かそう...
                 int i;
                 for (i = TreeParser_RecCal(strLis[1]), TreeParser_RecCal(strLis[2]), i++) {
                     TreeParser_RecCal(strLis[3])
                 }
+                // ドスル・ザビ
                 */
                 break;
+            
             case "Movement":
-                //; break;
+                //そろそろ; break;
+            
             case "Area":
-                //; break;
+                //魔法作らんと; break;
+            
             case "Damage":
-                //; break;
+                //ここ作れない; break;
+            
+            case IsArithExpr(strLis[0]):
+                ArithExprParser(strLis); break;
+            
+            case IsLogicExpr(strLis[0]):
+                LogicExprParser(strLis); break;
+            
+            case IsComparExpr(strLis[0]):
+                ComparExprParser(strLis); break;
+            
             case string strLis[0] when Regex.IsMatch(strLis[0], @"[a-zA-Z][a-zA-Z0-9]*\s*="):
-                //; break;
+                //どこかに代入; break;
+            
             default:
                 Console.WriteLine("Syntax Error"); break;
         }
@@ -90,25 +106,28 @@ public class test1
     }
 
     
-    string arithOpers = @"[+-*/%]"
-    string logicOpers = @"[&|!]"
+    string ArithOpers = @"[+-*/%]"
+    string LogicOpers = @"[&|!]"
     string ComparOpers = @"==|<=|>=|!=|[<>]"
     
-    static bool IsArithExpr(string s){
-        return 0 < Regex.Match(s, arithOper).Count() & 0 == Regex.Match(s, LogicOper+ComparOpers).Count() 
+    static bool IsArithExpr(string s) {
+        return 0 < Regex.Match(s, ArithOpers).Count() & 0 == Regex.Match(s, LogicOpers+ComparOpers).Count() 
     }
     static int ArithExprParser(string s) {
 
     }
 
-    string[] LogicOper = [3]{"&", "|", "!"};
-
-    static bool BoolExprParser(string s) {
+    static bool IsLogicExpr(string s) {
+        return 0 < Regex.Match(s, LogicOpers).Count() & 0 == Regex.Match(s, LogicOpers+ComparOpers).Count() 
+    }
+    static bool LogicExprParser(string s) {
         
     }
 
-    string[] ComparExpr = new string[6]{ "<", ">", "<=", ">=", "==", "!=" };
-    static bool ComparxprParser(string s) {
+    static bool IsComparExpr(string s) {
+        return 0 < Regex.Match(s, ComparOpers).Count() 
+    }
+    static bool ComparExprParser(string s) {
         
     }
 
