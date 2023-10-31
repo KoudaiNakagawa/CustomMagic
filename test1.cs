@@ -55,21 +55,30 @@ public class test1
         }
     }
 
-    static dynamic TreeParser_RecCal(string s) {
-        //string s0 = s[0];
+    static dynamic TreeParser_RecCal(string[] strLis) {
         
-        switch(s0) {
-            case "If":
-                //; break;
+        switch(strLis[0]) {
+                if( TreeParser_RecCal(strLis[1]) ) {
+                    TreeParser_RecCal(strLis[2]);
+                }
+                else {
+                    try { TreeParser_RecCal(strLis[3]); }
+                }
             case "For":
-                //; break;
+                /* どうやって動かそう...
+                int i;
+                for (i = TreeParser_RecCal(strLis[1]), TreeParser_RecCal(strLis[2]), i++) {
+                    TreeParser_RecCal(strLis[3])
+                }
+                */
+                break;
             case "Movement":
                 //; break;
             case "Area":
                 //; break;
             case "Damage":
                 //; break;
-            case string s0 when Regex.IsMatch(s0, @"[a-zA-Z][a-zA-Z0-9]*\s*="):
+            case string strLis[0] when Regex.IsMatch(strLis[0], @"[a-zA-Z][a-zA-Z0-9]*\s*="):
                 //; break;
             default:
                 Console.WriteLine("Syntax Error"); break;
@@ -80,10 +89,16 @@ public class test1
         return TreeParser_RecCal(s);
     }
 
-    string[] ArithOper = new string[5]{"+", "-", "*", "/", "%"};
     
+    string arithOpers = @"[+-*/%]"
+    string logicOpers = @"[&|!]"
+    string ComparOpers = @"==|<=|>=|!=|[<>]"
+    
+    static bool IsArithExpr(string s){
+        return 0 < Regex.Match(s, arithOper).Count() & 0 == Regex.Match(s, LogicOper+ComparOpers).Count() 
+    }
     static int ArithExprParser(string s) {
-        Regex.Match(s, @"[+-*/%]")
+
     }
 
     string[] LogicOper = [3]{"&", "|", "!"};
