@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 //using System.Data;
 using Internal;
@@ -51,17 +52,34 @@ public class test1
         }
     }
 
+    static void RecursiveCallTreeParser(string s) {
+        switch(s) {
+            case "If":
+                //; break;
+            case "For":
+                //; break;
+            case "Movement":
+                //; break;
+            case "Area":
+                //; break;
+            case "Damage":
+                //; break;
+            case "*=":
+                //; break;
+             
+        }
+    }
 
     string[] ArithOper = new string[5]{"+", "-", "*", "/", "%"};
     
     static int ArithExprParser(string s) {
-        if  in s    
+        Regex.Match(s, @"[+-*/%]")
     }
 
     string[] LogicOper = [3]{"&", "|", "!"};
 
     static bool BoolExprParser(string s) {
-
+        
     }
 
     string[] ComparExpr = new string[6]{ "<", ">", "<=", ">=", "==", "!=" };
